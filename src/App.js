@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import React , {useState, useEffect} from 'react';
+import Country from './components/Country/Country';
 function App() {
 
    const [countries , setCountries] = useState([]);
@@ -9,9 +9,15 @@ function App() {
                           .then(res => res.json())
                           .then(data=> setCountries(data))
    }, [])
+   console.log(countries);
   return (
     <div className="App">
       <h1>Country : {countries.length}</h1>
+      
+        {
+          countries.map(cnt => <Country name={cnt.name}></Country>)
+        }
+     
     </div>
   );
 }
